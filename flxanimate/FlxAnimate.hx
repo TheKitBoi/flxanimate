@@ -148,7 +148,7 @@ class FlxAnimate extends FlxSprite
 	{
 		@:privateAccess
 		if (showPivot || anim == null)
-			loadGraphic("flixel/images/logo/default.png");
+			loadGraphic("flxanimate/images/pivot.png");
 	}
 	override function destroy()
 	{
@@ -222,6 +222,8 @@ class FlxAnimate extends FlxSprite
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (sound != null)
+			sound.update(elapsed);
 		if (anim == null || anim.frames == null)
 			return;
 		if (anim.clickedButton)
