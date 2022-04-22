@@ -91,7 +91,7 @@ jobs:
       - name: Create APIStuff
         run: echo "package;class APIStuff{public static var API:String = '';public static var EncKey:String = '';}" > source/APIStuff.hx
       - name: Compile
-        run: haxelib run lime test windows
+        run: haxelib run lime build windows
       - name: Archive
         run: tar -czf bin.tar.gz 'export/release/windows/bin'
       - name: Publish Artifact
