@@ -41,7 +41,6 @@ jobs:
           haxelib install flixel-tools
           haxelib install flixel-ui
           haxelib install flixel-addons
-          haxelib install flxanimate
           haxelib install flxAnimate
           haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
           haxelib install hxcpp-debug-server
@@ -83,7 +82,7 @@ jobs:
           haxelib install flixel-tools
           haxelib install flixel-ui
           haxelib install flixel-addons
-          haxelib install flxanimate
+          haxelib install flxAnimate
           haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
           haxelib install hxcpp-debug-server
           haxelib list
@@ -122,7 +121,7 @@ jobs:
           haxelib install flixel-tools
           haxelib install flixel-ui
           haxelib install flixel-addons
-          haxelib install flxanimate
+          haxelib install flxAnimate
           haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
           haxelib install hxcpp-debug-server
           haxelib list
