@@ -87,6 +87,115 @@ class FlxAnimate extends FlxSprite
 		@:privateAccess
 		parseSymbol(anim.curSymbol, _matrix, anim.curFrame, anim.symbolType, colorTransform, true);
 	}
+	public function playAnim(?Name:String, Force:Bool = false, Reverse:Bool = false, Frame:Int = 0)
+	{
+		pauseAnim();
+		@:privateAccess
+		var curThing = anim.animsMap.get(Name);
+		@:privateAccess
+		if (curThing != null && anim.name != Name || Force || !Reverse && anim.curFrame >= anim.length || Reverse && anim.curFrame <= 0)
+		{
+			if (!Reverse)
+				anim.curFrame = Frame;
+			else
+				anim.curFrame =  Frame - anim.length;
+		}
+		@:privateAccess
+		if ([null, ""].indexOf(Name) == -1 && curThing != null)
+		{
+			anim.x = x + curThing.X;
+			anim.y = y + curThing.Y;
+			anim.frameLength = 0;
+			for (layer in curThing.timeline.L)
+			{
+				if (anim.frameLength < layer.FR.length)
+				{
+					anim.frameLength = layer.FR.length;
+				}
+			}
+			timeline = curThing.timeline;
+			@:privateAccess
+			anim.loopType = curThing.looped ? loop : playonce;
+			@:privateAccess
+			anim.name = curThing.symbolName;
+		}
+		reversed = Reverse;
+		isPlaying = true;
+	}
+	public function pauseAnim()
+	{
+		isPlaying = false;
+	}
+	public function stopAnim()
+	{
+		pauseAnim();
+		anim.curFrame = 0;
+	}
+	
+	function set_framerate(value:Float):Float
+	{
+		frameDelay = 1 / value;
+		return framerate = value;
+	}
+	
+	public override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+		if (!isPlaying)
+			return;
+
+		frameTick += elapsed;
+
+		while (frameTick > frameDelay)
+		{
+			if (reversed)
+			{
+				anim.curFrame--;
+			}
+			else
+			{
+				anim.curFrame++;
+			}
+			frameTick -= frameDelay;
+		}
+		@:privateAccess
+		if (anim.curLabel != null)
+		{
+			if (anim.labelcallbacks.exists(anim.curLabel))
+			{
+				for (callback in anim.labelcallbacks.get(anim.curLabel))
+					callback();
+			}
+		}
+		@:privateAccess
+		if ([playonce, "playonce"].indexOf(anim.loopType) != -1)
+		{
+			if (reversed)
+			{
+				if (anim.curFrame <= 0)
+				{
+					if (onComplete != null)
+						onComplete();
+					isPlaying = false;
+				}
+			}
+			else
+			{
+				if (anim.curFrame >= anim.length)
+				{
+					if (onComplete != null)
+						onComplete();
+					isPlaying = false;	
+				}
+			}
+		}
+		if (FlxG.keys.pressed.S)
+			AnimationData.filters.saturation = (AnimationData.filters.saturation + 2) % 100;
+		if (FlxG.keys.anyPressed([V, B]))
+			AnimationData.filters.brightness = (AnimationData.filters.brightness + 2);
+		super.update(elapsed);
+		anim.update(elapsed);
+	}
 	function parseSymbol(symbol:FlxSymbol, m:FlxMatrix, FF:Int, symbolType:SymbolType, colorFilter:ColorTransform, mainSymbol:Bool)
 	{
 		switch (symbolType)
