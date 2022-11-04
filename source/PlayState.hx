@@ -18,6 +18,7 @@ class PlayState extends FlxState
 
 		char = new FlxAnimate(0, 0, 'assets/images/ninja-girl');
 		char.antialiasing = true;
+		char.anim.addBySymbol("", "play");
 		add(char);
 
 		super.create();
@@ -28,9 +29,9 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.SPACE)
 		{
 			if (!char.anim.isPlaying)
-				char.playAnim();
+				char.anim.play("play");
 			else
-				char.pauseAnim();
+				char.anim.pause("play");
 		}
 
 		char.x = FlxG.mouse.x;
