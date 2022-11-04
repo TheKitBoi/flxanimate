@@ -18,7 +18,7 @@ class Main extends Sprite
 		
 		function buildDebugDisplay()
    		{
- 		     var memoryCounter = new MemoryCounter(10, 13, 0xFFFFFF);
+ 		     var memoryCounter = new MemoryCounter(10, 13, FlxColor.BLACK);
  		     addChild(memoryCounter);
    		}
 		
