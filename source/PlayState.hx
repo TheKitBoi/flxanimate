@@ -31,7 +31,7 @@ class PlayState extends FlxState
 			if (!char.anim.isPlaying)
 				char.anim.play("play");
 			else
-				char.anim.pause("play");
+				char.anim.stop("play");
 		}
 
 		char.x = FlxG.mouse.x;
