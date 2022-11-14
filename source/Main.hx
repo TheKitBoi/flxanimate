@@ -8,7 +8,7 @@ import openfl.display.FPS;
 
 class Main extends Sprite
 {
-	var framerate:Int = #if web 60 #else 144 #end;
+	var framerate:Int = 60;
 
 	public function new()
 	{
