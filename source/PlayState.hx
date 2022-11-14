@@ -41,7 +41,7 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.I)
 			FlxG.updateFramerate += 10;
 			FlxG.drawFramerate += 10;
-		#end;
+		#end
 		
 		char.x = FlxG.mouse.x;
 		char.y = FlxG.mouse.y;
