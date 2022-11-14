@@ -33,7 +33,16 @@ class PlayState extends FlxState
 			else
 				char.anim.stop();
 		}
-
+		
+		#if !html5
+		if (FlxG.keys.justPressed.P)
+			FlxG.updateFramerate += 10;
+			FlxG.drawFramerate += 10;
+		if (FlxG.keys.justPressed.I)
+			FlxG.updateFramerate += 10;
+			FlxG.drawFramerate += 10;
+		#end
+		
 		char.x = FlxG.mouse.x;
 		char.y = FlxG.mouse.y;
 
