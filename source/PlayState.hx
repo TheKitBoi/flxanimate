@@ -41,11 +41,6 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.I)
 			FlxG.updateFramerate -= 10;
 			FlxG.drawFramerate -= 10;
-		
-		FlxG.updateFramerate.minValue = 60;
-		FlxG.drawFramerate.minValue = 60;
-		FlxG.updateFramerate.maxValue = 240;
-		FlxG.drawFramerate.maxValue = 240;
 		#end
 		
 		char.x = FlxG.mouse.x;
