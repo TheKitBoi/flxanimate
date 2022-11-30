@@ -20,7 +20,7 @@ class MemoryCounter extends TextField
 
 		this.x = x;
 		this.y = y;
-		currentFPS = 0;
+		//currentFPS = 0;
 		this.width = 500;
 		this.selectable = false;
 		this.mouseEnabled = false;
@@ -44,7 +44,7 @@ class MemoryCounter extends TextField
 
 		if (mem > memPeak)
 			memPeak = mem;
-		text = "FPS: " + currentFPS;
+		//text = "FPS: " + currentFPS;
 		text = 'RAM: ${mem}mb / ${memPeak}mb';
 	}
 }
