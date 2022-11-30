@@ -9,6 +9,7 @@ import openfl.text.TextFormat;
 
 class MemoryCounter extends TextField
 {
+	public var currentFPS(default, null):Int;
 	private var memPeak:Float = 0;
 
 	static final BYTES_PER_MEG:Float = 1024 * 1024;
@@ -20,7 +21,7 @@ class MemoryCounter extends TextField
 
 		this.x = x;
 		this.y = y;
-		//currentFPS = 0;
+		currentFPS = 0;
 		this.width = 500;
 		this.selectable = false;
 		this.mouseEnabled = false;
@@ -40,11 +41,14 @@ class MemoryCounter extends TextField
 	@:noCompletion
 	private #if !flash override #end function __enterFrame(deltaTime:Float):Void
 	{
+		var currentCount = times.length;
+		currentFPS = Math.round((currentCount + cacheCount) / 2);
+		
 		var mem:Float = Math.round(#if !hl System.totalMemory #else Gc.stats().currentMemory #end / BYTES_PER_MEG / ROUND_TO) * ROUND_TO;
 
 		if (mem > memPeak)
 			memPeak = mem;
-		//text = "FPS: " + currentFPS;
-		text = 'RAM: ${mem}mb / ${memPeak}mb';
+			text = "FPS: " + currentFPS;
+			text = 'RAM: ${mem}mb / ${memPeak}mb';
 	}
 }
