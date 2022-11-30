@@ -16,14 +16,6 @@ class Main extends Sprite
 		super();
 
 		addChild(new FlxGame(1280, 720, PlayState, #if (flixel < "5.0.0") 1, #end framerate, framerate, true, false));
-		
-		function buildDebugDisplay()
-   		{
- 		     var memoryCounter = new MemoryCounter(10, 13, FlxColor.BLACK);
- 		     addChild(memoryCounter);
-   		}
-		
-		buildDebugDisplay();
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
