@@ -30,6 +30,7 @@ class MemoryCounter extends TextField
 		this.selectable = false;
 		this.mouseEnabled = false;
 		defaultTextFormat = new TextFormat("_sans", 12, color);
+		text = "FPS: ";
 		text = "RAM: ";
 
 		#if flash
