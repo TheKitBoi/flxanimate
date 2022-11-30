@@ -11,6 +11,10 @@ class MemoryCounter extends TextField
 {
 	public var currentFPS(default, null):Int;
 	private var memPeak:Float = 0;
+	
+	@:noCompletion private var cacheCount:Int;
+	@:noCompletion private var currentTime:Float;
+	@:noCompletion private var times:Array<Float>;
 
 	static final BYTES_PER_MEG:Float = 1024 * 1024;
 	static final ROUND_TO:Float = 1 / 100;
