@@ -8,6 +8,7 @@ import openfl.display.FPS;
 
 class Main extends Sprite
 {
+	public static var fpsVar:FPS;
 	var framerate:Int = #if web 60 #else 240 #end;
 
 	public function new()
@@ -24,7 +25,9 @@ class Main extends Sprite
 		
 		buildDebugDisplay();
 
-		var fpsCounter = new FPS(10, 3, FlxColor.BLACK);
-		addChild(fpsCounter);
+		#if !mobile
+		fpsVar = new FPS(10, 3, 0xFFFFFF);
+		addChild(fpsVar);
+		#end
 	}
 }
