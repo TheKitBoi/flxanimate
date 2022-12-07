@@ -94,7 +94,7 @@ class FlxAnimate extends FlxSprite
 	{
 		parseElement(anim.curInstance, anim.curFrame, _matrix, colorTransform, true);
 		if (showPivot)
-			drawLimb(_pivot, _matrix);
+			drawLimb(_pivot, new FlxMatrix(1,0,0,1, origin.x, origin.y));
 	}
 	/**
 	 * This basically renders an element of any kind, both limbs and symbols.
@@ -148,14 +148,17 @@ class FlxAnimate extends FlxSprite
 				frame.fireCallbacks();
 			}
 			
-			for (element in frame._elements)
+			for (element in frame.getList())
 			{
 				var firstframe = 0;
 				if (element.symbol != null && element.symbol.loop != SingleFrame)
 				{
 					firstframe = firstFrame - frame.index;
 				}
-				parseElement(element, firstframe, matrix, frame._colorEffect);
+				var coloreffect = new ColorTransform();
+				coloreffect.concat(frame._colorEffect);
+				coloreffect.concat(colorEffect);
+				parseElement(element, firstframe, matrix, coloreffect);
 			}
 		}
 	}
