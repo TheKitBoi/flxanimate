@@ -18,7 +18,7 @@ class PlayState extends FlxState
 
 		char = new FlxAnimate(0, 0, 'assets/images/ninja-girl');
 		char.antialiasing = true;
-		char.anim.addBySymbol("", "play");
+		char.anim.addBySymbol("", "play" 0,0);
 		add(char);
 
 		super.create();
