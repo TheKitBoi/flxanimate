@@ -1,6 +1,5 @@
 package;
 
-import debug.MemoryCounter;
 import flixel.FlxGame;
 import flixel.util.FlxColor;
 import openfl.display.Sprite;
