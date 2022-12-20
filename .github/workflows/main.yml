@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
       - uses: krdlab/setup-haxe@master
         with:
@@ -53,7 +53,7 @@ jobs:
       - name: Compile
         run: haxelib run lime build linux
       - name: Publish Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@majn
         with:
           name: linuxBuild
           path: 'export/release/linux/bin'
@@ -62,7 +62,7 @@ jobs:
     
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
       - uses: krdlab/setup-haxe@master
         with:
@@ -90,7 +90,7 @@ jobs:
       - name: Compile
         run: haxelib run lime build windows
       - name: Publish Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: windowsBuild
           path: 'export/release/windows/bin'
@@ -99,7 +99,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
       - uses: krdlab/setup-haxe@master
         with:
@@ -126,7 +126,7 @@ jobs:
       - name: Compile
         run: haxelib run lime build mac
       - name: Publish Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: macBuild
           path: 'export/release/macos/bin'
