@@ -53,7 +53,7 @@ jobs:
       - name: Compile
         run: haxelib run lime build linux
       - name: Publish Artifact
-        uses: actions/upload-artifact@majn
+        uses: actions/upload-artifact@main
         with:
           name: linuxBuild
           path: 'export/release/linux/bin'
