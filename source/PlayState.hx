@@ -20,6 +20,8 @@ class PlayState extends FlxState
 		char.antialiasing = true;
 		char.anim.addBySymbol("", "play", 0,0);
 		add(char);
+		
+		FlxG.game.focusLostFramerate = 60;
 
 		super.create();
 	}
