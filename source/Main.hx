@@ -10,7 +10,7 @@ class Main extends Sprite
 	public static var fpsVar:FPS;
 	var framerate:Int = 60;
 
-	public function new()
+	public function new():Void
 	{
 		super();
 
