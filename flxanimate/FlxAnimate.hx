@@ -168,7 +168,7 @@ class FlxAnimate extends FlxSprite
 	{
 		var badPress:Bool = false;
 		var goodPress:Bool = false;
-		#if !mobile
+		#if FLX_MOUSE
 		if (FlxG.mouse.pressed && FlxG.mouse.overlaps(this))
 			goodPress = true;
 		if (FlxG.mouse.pressed && !FlxG.mouse.overlaps(this) && !goodPress)
@@ -212,10 +212,10 @@ class FlxAnimate extends FlxSprite
 	{
 		if (alpha == 0 || colorTransform != null && (colorTransform.alphaMultiplier == 0 || colorTransform.alphaOffset == -255) || limb == null || limb.type == EMPTY)
 			return;
-		var matrix = new FlxMatrix();
-		matrix.concat(_matrix);
 		for (camera in cameras)
 		{
+			var matrix = new FlxMatrix();
+			matrix.concat(_matrix);
 			if (!camera.visible || !camera.exists || !limbOnScreen(limb, _matrix, camera))
 				return;
 			
