@@ -22,6 +22,9 @@ class PlayState extends FlxState
 		add(char);
 		
 		FlxG.game.focusLostFramerate = 60;
+		
+		persistentUpdate = true;
+		persistentDraw = true;
 
 		super.create();
 	}
