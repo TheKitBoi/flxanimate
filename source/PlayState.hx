@@ -8,6 +8,8 @@ import flixel.FlxG;
 class PlayState extends FlxState
 {
 	var char:FlxAnimate;
+	
+	public var FPSNumber:Int = 60;
 
 	override public function create()
 	{
@@ -43,10 +45,14 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.P)
 			FlxG.updateFramerate += 10;
 			FlxG.drawFramerate += 10;
+			FPSNumber += 10;
 		if (FlxG.keys.justPressed.I)
 			FlxG.updateFramerate -= 10;
 			FlxG.drawFramerate -= 10;
+			FPSNumber -= 10;
 		#end
+		
+		FPSNumber.displayFormat = '%v FPS';
 		
 		char.x = FlxG.mouse.x;
 		char.y = FlxG.mouse.y;
