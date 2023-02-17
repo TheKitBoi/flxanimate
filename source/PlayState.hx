@@ -52,7 +52,7 @@ class PlayState extends FlxState
 			FPSNumber -= 10;
 		#end
 		
-		FPSNumber.displayFormat = '%v FPS';
+		//FPSNumber.displayFormat = '%v FPS';
 		
 		char.x = FlxG.mouse.x;
 		char.y = FlxG.mouse.y;
